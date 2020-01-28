@@ -25,15 +25,15 @@ func none(items []account, predicate func(item account) bool) bool {
 	return index(items, predicate, false) == -1
 }
 
-func index(items []account, predicate func(item account) bool, reverse bool) int64 {
-	for _, value := range items {
+func index(items []account, predicate func(item account) bool, reverse bool) int {
+	for index, value := range items {
 		if reverse {
 			if !predicate(value) {
-				return value.id
+				return index
 			}
 		} else {
 			if predicate(value) {
-				return value.id
+				return index
 			}
 		}
 	}
@@ -45,7 +45,7 @@ func find(items []account, predicate func(item account) bool) (account, error) {
 	if result == -1 {
 		return account{}, accountError{message: "not found"}
 	}
-	return items[result-1], nil
+	return items[result], nil
 }
 
 func main() {}

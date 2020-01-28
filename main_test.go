@@ -26,7 +26,7 @@ func Example_AllForFalse() {
 
 func Example_AnyForTrue() {
 	fmt.Println(any(data, func(item account) bool {
-		return item.balance >= 0
+		return item.balance >= 10_000
 	}))
 	// Output: true
 }
@@ -54,7 +54,7 @@ func Example_IndexWithResult() {
 	fmt.Println(index(data, func(item account) bool {
 		return item.balance > 3_000
 	},false))
-	// Output: 4
+	// Output: 3
 }
 func Example_IndexWithoutResult() {
 	fmt.Println(index(data, func(item account) bool {
